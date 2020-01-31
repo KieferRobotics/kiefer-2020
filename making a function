@@ -1,0 +1,43 @@
+#include <kipr/botball.h>
+
+void drive_forward();
+void drive(int r_power, int l_power, int time); // function prototypes
+void turn_ninety_degrees(int ticks, int r_power);
+
+int r=0;
+int l=3;
+int main()
+
+{
+    printf("creating a function\n");
+
+    turn_ninety_degrees(1540,1000);
+    ao();
+
+    return 0;
+}
+
+void turn_ninety_degrees(int ticks, int power)
+{
+    cmpc(r);
+    while(gmpc(0)<ticks)
+    {
+        mav(0,1000);
+    }
+
+}
+
+
+void drive(int r_power, int l_power, int time) //function definition
+{
+    mav(r,r_power);
+    mav(l,l_power);
+    msleep(time);
+}
+
+void drive_forward()
+{
+    mav(0,500);
+    mav(3,500);
+    ao();
+}
